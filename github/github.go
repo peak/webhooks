@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -167,6 +168,7 @@ func (hook Webhook) Parse(r *http.Request, events ...Event) (interface{}, error)
 		}
 	}
 
+	log.Printf("Event: %s", event)
 	switch gitHubEvent {
 	case CheckRunEvent:
 		var pl CheckRunPayload
